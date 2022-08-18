@@ -6,8 +6,6 @@ class App {
 	public static void main(String[] args) {
 		final String GREETING = "Hello";
 		boolean hasName = false;
-		//boolean isInteractive = false;
-		//boolean hasStdin = false;
 		Map<String, Boolean> options = new HashMap<>();
 		options.put("interactive", false);
 		options.put("stdin", false);
