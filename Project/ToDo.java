@@ -1,35 +1,63 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class ToDo {
     public static void main (String[] args) {
         Scanner sc = new Scanner(System.in);
-        String task = "";
-        boolean more = false;
 
-        System.out.print("Menu for Task:\n1. See Tasks\n2. Add Task\n3. Clear Task\nEnter number: ");
-        String menuOption = sc.nextLine();
+        final String menu = "Menu for Task:\n1. See Tasks\n2. Add Task\n3. Clear Task";
+        ArrayList<String> tasks = new ArrayList<String>();
+        boolean more = false;
+        String menuOption;
+        String taskNum;
+
+        System.out.println(menu.concat("\nEnter a number:"));
+        menuOption = sc.nextLine();
 
         do {
+            // Clear CDL
+            for(int s = 0; s < 6; s++) {
+                System.out.println("\n");
+            }
+
             switch(menuOption){
                 case "1":
                     // Display task
-                    System.out.println("Tasks are:\n" + task);
-                    break;
-                case "2":
-                    System.out.println("Enter Task:");
-                    if(task == ""){
-                        task = sc.nextLine();
+                    if(!(tasks.isEmpty())) {
+                        System.out.println("Task List:");
+                        for(int i = 0; i < tasks.size(); i++) {
+                            System.out.println((i +1) + ". " + tasks.get(i));
+                        }
                     } else {
-                        task = task + "\n" + sc.nextLine();
+                        System.out.println("Task list is empty.");
                     }
                     break;
+                case "2":
+                    // Add task to list
+                    System.out.println("Enter Task:");
+                    tasks.add(sc.nextLine());
+                    break;
                 case "3":
-                    //remove task
-                    System.out.println(task);
+                    // Remove task from list
+                    if(!tasks.isEmpty()) {
+                        System.out.println("Which task to remove:");
+                        for (int i = 0; i < tasks.size(); i++) {
+                            System.out.println((i + 1) + ". " + tasks.get(i));
+                        }
+                        taskNum = sc.nextLine();
+                        int num = Integer.parseInt(taskNum);
+                        System.out.println("Task removed\n" + tasks.get(num - 1));
+                        tasks.remove(num - 1);
+                    } else {
+                        System.out.println("List already empty");
+                    }
                     break;
             }
             
-            System.out.print("Repeat: ");
+            // Space
+            System.out.println("\n");
+            
+            System.out.println(menu.concat("\n4. Exit\nEnter a number"));
             menuOption = sc.nextLine();
 
             switch(menuOption){
@@ -43,11 +71,14 @@ public class ToDo {
             }
         } while (more);
         
-        //System.out.println("Enter ToDo task:");
-        //task = sc.nextLine();
-
+        // Test section 
+        /* 
+        System.out.println(more);
         System.out.println("Option is: " + menuOption);
-        System.out.println("Task are : " + task);
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println(tasks.get(i));
+        }
+        */
         sc.close();
         }
 }
