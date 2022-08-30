@@ -8,8 +8,8 @@ import com.github.NickNSX.users.UserDAO;
 
 public class AddTask extends AbstractScreen {
 
-    private final String redText = "\u001B[31m";
-    private final String defaultText = "\u001B[0m";
+    private static final String redText = "\u001B[31m";
+    private static final String defaultText = "\u001B[0m";
 
     public AddTask(BufferedReader consoleReader) {
         super("AddTaskScreen", consoleReader);
@@ -21,6 +21,7 @@ public class AddTask extends AbstractScreen {
         // System.out.println("Add Task Screen works");
 
         User newUser = new User();
+        UserDAO userDAO = new UserDAO();
 
         System.out.println("Enter Info");
 
@@ -32,7 +33,7 @@ public class AddTask extends AbstractScreen {
             String name = consoleReader.readLine();
 
             if (name == null || name.trim().equals("")) {
-                System.err.println(redText + "Invalid name. Restarting" + defaultText);
+                System.out.println(redText + "Invalid name. Restarting" + defaultText);
                 continue;
             }
 
@@ -42,7 +43,7 @@ public class AddTask extends AbstractScreen {
             String task = consoleReader.readLine();
 
             if (task == null || task.trim().equals("")) {
-                System.err.println(redText + "Invalid task. Restarting" + defaultText);
+                System.out.println(redText + "Invalid task. Restarting" + defaultText);
                 continue;
             }
 
@@ -51,7 +52,7 @@ public class AddTask extends AbstractScreen {
             formCompleted = true;
         }
 
-        UserDAO userDAO = new UserDAO();
+        //UserDAO userDAO = new UserDAO();
         String entered = userDAO.save(newUser);
 
         System.out.println("Entered: " + entered);

@@ -8,6 +8,9 @@ import com.github.NickNSX.users.UserDAO;
 
 public class DeleteEntry extends AbstractScreen{
 
+    private final String redText = "\u001B[31m";
+    private final String defaultText = "\u001B[0m";
+
     public DeleteEntry(BufferedReader consolReader) {
         super("DeleteEntry", consolReader);
     }
@@ -26,7 +29,7 @@ public class DeleteEntry extends AbstractScreen{
 
         delUser.setName(name);
 
-        System.out.println("Confirm Delete (y/n): " + delUser.getName());
+        System.out.println("Confirm Delete (y/n): " + redText + delUser.getName() + defaultText);
         String confirm = consoleReader.readLine();
 
         switch(confirm) {

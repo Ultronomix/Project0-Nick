@@ -18,12 +18,11 @@ public class SeeTask extends AbstractScreen {
 
     @Override
     public void render() throws IOException {
-        // TODO Auto-generated method stub
+
         System.out.println("Displaying all Entry.\nWorking...");
-       List<User> users = userDAO.getAllUsers();
-        for (User user: users) {
+        List<User> users = userDAO.getAllUsers();
+        for (User user : users) {
             System.out.println(user);
         }
     }
-
 }

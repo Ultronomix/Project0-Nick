@@ -8,16 +8,16 @@ public class User {
     private final String yellowText = "\u001B[33m";
     private final String defaultText = "\u001B[0m";
 
-    private int num_row;
+    private int id;
     private String name;
     private String task;
 
-    public int getNum_row() {
-        return num_row;
+    public int getId() {
+        return id;
     }
 
-    public void setRow_num(int num_row) {
-        this.num_row = num_row;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,7 +52,7 @@ public class User {
     @Override
     public String toString() {
         return yellowText + "User " + defaultText + "{" +
-                yellowText + "num_row " + defaultText + "= '" + defaultText + num_row +  "' " +
+                yellowText + "id " + defaultText + "= '" + defaultText + id +  "' " +
                 yellowText + "name " + defaultText + "= '" + defaultText + name + "' " +
                 yellowText + "task "+ defaultText + "= '" + defaultText + task +
                 "'}";

@@ -10,11 +10,11 @@ import com.github.NickNSX.common.datasource.ConnectionFactory;
 
 // DAO = Data Access Object 
 public class UserDAO {
-    
+
     public List<User> getAllUsers() {
 
-        String sql = "SELECT ROW_NUMBER() OVER() AS num_row, * " + 
-                    "FROM tasks.user_task";
+        String sql = "SELECT * " +
+                "FROM tasks.user_task";
 
         List<User> allUsers = new ArrayList<>();
 
@@ -25,15 +25,14 @@ public class UserDAO {
 
             while (rs.next()) {
                 User user = new User();
-                user.setRow_num(rs.getInt("num_row"));
+                user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setTask(rs.getString("task"));
                 allUsers.add(user);
             }
 
-            
         } catch (SQLException e) {
-            //TODO: handle exception
+            // TODO: handle exception
             System.err.println("Something went wrong");
             e.printStackTrace();
         }
@@ -42,19 +41,21 @@ public class UserDAO {
     }
 
     public String deleteEntry(User user) {
-            
+
         String sqlDelete = "DELETE FROM tasks.user_task " +
-                    "WHERE name = ?";
+                "WHERE name = ?";
+
         getAllUsers();
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             PreparedStatement pstmt = conn.prepareStatement(sqlDelete);
-            pstmt.setString(1, user.getName());
+            pstmt.setString(1, user.getName().trim().toUpperCase());
+
             pstmt.executeUpdate();
-            
+
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
             System.err.println("Something went wrong.");
             e.printStackTrace();
         }
@@ -64,26 +65,22 @@ public class UserDAO {
 
     public String save(User user) {
         String sql = "INSERT INTO tasks.user_task(name, task) " +
-                    "VALUES(?, ?)";
+                "VALUES(?, ?)";
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, user.getName());
-            pstmt.setString(2, user.getTask());
+            pstmt.setString(1, user.getName().trim().toUpperCase());
+            pstmt.setString(2, user.getTask().trim());
 
             pstmt.executeUpdate();
 
-            
         } catch (Exception e) {
-            //TODO: handle exception
+            // TODO: handle exception
             System.err.println("Something went wrong.");
             e.printStackTrace();
         }
 
         return user.getName() + " " + user.getTask();
-    }
-
-    public void DeleteEntry() {
     }
 }
