@@ -1,12 +1,10 @@
-DROP TABLE tasks;
+DROP TABLE tasks.user_task;
 
-CREATE TABLE tasks (
-	name varchar PRIMARY KEY NOT NULL,
+CREATE TABLE tasks.user_task (
+	id serial PRIMARY KEY NOT NULL ,
+	name varchar NOT NULL,
 	task varchar NOT null
 );
 
-INSERT INTO tasks(name, task)
-VALUES ('nick', 'test project');
-
 SELECT *
-FROM tasks;
+FROM tasks.user_task ut;
