@@ -13,8 +13,10 @@ public class UserDAO {
 
     public List<User> getAllUsers() {
 
-        String sql = "SELECT * " +
-                "FROM tasks.user_task";
+        String sql = "SELECT ROW_NUMBER() OVER() AS row_num, " +
+                    "name, " +
+                    "task " +
+                    "FROM tasks.user_task";
 
         List<User> allUsers = new ArrayList<>();
 
@@ -25,7 +27,7 @@ public class UserDAO {
 
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt("row_num"));
                 user.setName(rs.getString("name"));
                 user.setTask(rs.getString("task"));
                 allUsers.add(user);
