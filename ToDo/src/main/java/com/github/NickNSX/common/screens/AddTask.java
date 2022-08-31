@@ -17,13 +17,10 @@ public class AddTask extends AbstractScreen {
 
     @Override
     public void render() throws IOException {
-        // TODO Auto-generated method stub
-        // System.out.println("Add Task Screen works");
 
         User newUser = new User();
-        UserDAO userDAO = new UserDAO();
 
-        System.out.println("Enter Info");
+        System.out.println("Enter Information:");
 
         boolean formCompleted = false;
 
@@ -52,12 +49,13 @@ public class AddTask extends AbstractScreen {
             formCompleted = true;
         }
 
-        //UserDAO userDAO = new UserDAO();
-        String entered = userDAO.save(newUser);
+        UserDAO userDAO = new UserDAO();
+        userDAO.save(newUser);
 
-        System.out.println("Entered: " + entered);
-
-        // TODO checks
+        System.out.println("Entered: name: '" + newUser.getName() + "' task: '" + newUser.getTask() + "'");
     }
-
 }
+
+/* gets a name and task from the user and checks if it is empty/
+    If they are empty tells the user and restarts. The infor is then 
+    passed to UserDAO to add to the database.*/

@@ -13,14 +13,12 @@ public class MainScreen extends AbstractScreen {
 
     public MainScreen(BufferedReader consoleReader) {
         super("MainScreen", consoleReader);
-        //TODO Auto-generated constructor stub
     }
 
     @Override
     public void render() throws IOException {
 
         System.out.println(greenText + "+----------------------------------------------------+\n" + defaultText);
-        // TODO Auto-generated method stub
         String mainMenu = "Welcome to To Do List!\n" +
                         "Select from the options:\n" +
                         "1) Add new task\n" +
@@ -52,3 +50,7 @@ public class MainScreen extends AbstractScreen {
         }
     }
 }
+
+/*  Creates the main screen when starting the program. It gives
+ * a list for the different functions of the program.
+ */

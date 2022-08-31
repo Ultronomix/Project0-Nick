@@ -40,7 +40,10 @@ public class DeleteEntry extends AbstractScreen{
                 System.out.println("Nothing deleted");
         }
         System.out.println(del);
-
     }
-    
 }
+
+/*  Ask the user which entry to delete and confirm if they
+ * want to delete that entry. It takes a name and delete the
+ * entry with the matching name.
+ */

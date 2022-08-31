@@ -26,3 +26,4 @@ public class SeeTask extends AbstractScreen {
         }
     }
 }
+/*  Displays all entries in the database. */

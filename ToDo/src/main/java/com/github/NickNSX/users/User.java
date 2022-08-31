@@ -58,3 +58,8 @@ public class User {
                 "'}";
     }
 }
+
+/*  set user's id, name, and task from the user or get their 
+ * information from the database. Displays the current data
+ * from the database useing the above format.
+ */

@@ -34,8 +34,7 @@ public class UserDAO {
             }
 
         } catch (SQLException e) {
-            // TODO: handle exception
-            System.err.println("Something went wrong");
+            System.err.println("Something went wrong when connection to database.");
             e.printStackTrace();
         }
 
@@ -57,8 +56,7 @@ public class UserDAO {
             pstmt.executeUpdate();
 
         } catch (Exception e) {
-            // TODO: handle exception
-            System.err.println("Something went wrong.");
+            System.err.println("Something went wrong when connecting to database.");
             e.printStackTrace();
         }
 
@@ -78,11 +76,13 @@ public class UserDAO {
             pstmt.executeUpdate();
 
         } catch (Exception e) {
-            // TODO: handle exception
-            System.err.println("Something went wrong.");
+            System.err.println("Something went wrong when connecting to database.");
             e.printStackTrace();
         }
-
         return user.getName() + " " + user.getTask();
     }
 }
+
+/*  DAO that gets all users from the database, delete a user
+ * from the database, or saves a user to the database.
+ */

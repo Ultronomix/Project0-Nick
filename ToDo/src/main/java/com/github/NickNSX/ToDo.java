@@ -7,3 +7,8 @@ public class ToDo {
         new AppContext().startApp();
     }
 }
+
+/*  A java Tasks application that takes in a name and task of a 
+ * person and adds it to a database, show data in a database, and
+ * delete data from the database.
+ */
