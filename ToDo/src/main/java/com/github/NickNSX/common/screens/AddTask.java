@@ -52,7 +52,7 @@ public class AddTask extends AbstractScreen {
         UserDAO userDAO = new UserDAO();
         userDAO.save(newUser);
 
-        System.out.println("Entered: name: '" + newUser.getName() + "' task: '" + newUser.getTask() + "'");
+        System.out.println("Entered: name: '" + newUser.getName().toUpperCase() + "' task: '" + newUser.getTask() + "'");
     }
 }
 

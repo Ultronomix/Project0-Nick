@@ -29,7 +29,7 @@ public class DeleteEntry extends AbstractScreen{
 
         delUser.setName(name);
 
-        System.out.println("Confirm Delete (y/n): " + redText + delUser.getName() + defaultText);
+        System.out.print("Confirm Delete (y/n): " + redText + delUser.getName().toUpperCase() + defaultText + " > ");
         String confirm = consoleReader.readLine();
 
         switch(confirm) {
